@@ -102,7 +102,7 @@ body {
 }
 
 
-/*Sign Up Page*/
+/*SignUp SignIn Page*/
 .wrapper {
 	width: 60%;
 	background-color: white;
@@ -117,4 +117,19 @@ body {
 .form-wrapper {
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+/*create diary page*/
+.diary-wrapper {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #ebf4fa;
+	padding: 30px;
+}
+
+.diary-wrapper form {
+	margin-top: 20px;
 }
