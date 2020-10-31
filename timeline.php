@@ -93,11 +93,9 @@ $connect->close();
 		</div>
 
     <script>
+<script>
 $(document).ready(function(){
-    jQuery('.timeline').timeline({
-        mode: 'horizontal',
-        visibleItems: 4,
-    });
+    jQuery('.timeline').timeline();
 });
 </script>
     </body>  
