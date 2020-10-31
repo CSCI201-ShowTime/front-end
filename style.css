@@ -149,3 +149,31 @@ body {
 	margin-left: 10px;
 	font-size: 90%;
 }
+.avatar {
+	margin: auto;
+  border: 5px solid white;
+  padding: 10px;
+  vertical-align: middle;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+.img-container-block {
+	width:20px;
+ height:20px;
+	text-align: center;
+}
+.center-align{
+	margin: auto;
+	padding: auto;
+	 text-align: center;
+
+}
+.title h1{
+	margin: 10px;
+	text-align: center;
+	font-family: "Bitter", "monospace";
+}
+.group-block{
+	background-color: ""
+}
