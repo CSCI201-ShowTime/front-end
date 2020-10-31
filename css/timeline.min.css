@@ -24,7 +24,7 @@
     z-index: 2;
 }
 .timeline__item {
-    font-size: 16px;
+    font-size: 6px;
     font-size: 1rem;
     padding: .625rem 2.5rem .625rem 0;
     position: relative;
@@ -115,7 +115,7 @@
     z-index: 2;
 }
 .timeline__content h2 {
-    font-size: 18px;
+    font-size: 8px;
     font-weight: 700;
     margin: 0 0 .625rem;
 }
