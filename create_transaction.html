@@ -23,6 +23,87 @@
 		</div>
 	</nav>
 	<div style="height: 55px;"></div>
+	<div class="container-fluid diary-wrapper shadow p-3 mb-5 rounded">
+		<h1>
+			<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cash-stack" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="margin-right: 5px;">
+				<path d="M14 3H1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1h-1z"/>
+				<path fill-rule="evenodd" d="M15 5H1v8h14V5zM1 4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H1z"/>
+				<path d="M13 5a2 2 0 0 0 2 2V5h-2zM3 5a2 2 0 0 1-2 2V5h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 13a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+			</svg>
+			New Transaction
+		</h1>
+		<hr>
+		<form action="" method="POST" onsubmit="return checkRequirement(this);">
+			<div class="form-group" style="margin-bottom: 5px;">
+				<label for="title" class="sr-only">Transaction Title</label>
+				<input type="text" class="form-control" id="title" placeholder="Transaction Title e.g. Grocery" name="title">
+			</div>
+			<div class="form-group" style="margin-bottom: 5px;">
+				<label for="method" class="sr-only">Payment Method</label>
+				<input type="text" class="form-control" id="method" placeholder="Payment Method" name="method">
+			</div>
+			<div class="form-group row" style="margin-bottom: 0;">
+				<div class="col-12 col-md-6">
+					<label for="date">Date</label>
+					<input type="date" class="form-control" id="date" name="date">
+				</div>
+				<div class="col-12 col-md-6">
+					<label for="time">Time</label>
+					<input type="time" class="form-control" id="time" name="time">
+				</div>
+			</div>
+			<div style="margin-bottom: 7px; margin-left: 6px;"><small class="text-muted">Leave time black if you don't remember the time.</small></div>
+			<div class="form-group row" style="margin-bottom: 7px;">
+				<div class="col">
+					<label for="category">Category</label>
+					<select name="category" id="category" class="form-control">
+						<option value="" disabled="">Create More In Account Page</option>
+						<option value="0" selected>None: can be dynamically displayed with PHP</option>
+						<option value="1">Clothing</option>
+						<option value="2">Debt</option>
+						<option value="3">Food</option>
+						<option value="4">Fun</option>
+						<option value="5">Giving</option>
+						<option value="6">Healthcare</option>
+						<option value="7">Home Supplies</option>
+						<option value="8">Housing</option>
+						<option value="9">Insurance</option>
+						<option value="10">Personal Care</option>
+						<option value="11">Pets</option>
+						<option value="12">Services/Memberships</option>
+						<option value="13">Taxes</option>
+						<option value="14">Transportation</option>
+						<option value="15">Utilities</option>
+					</select>
+				</div>
+				<div class="col">
+					<label for="recipient">Recipient Email</label>
+					<input type="email" class="form-control" id="recipient" name="recipient">
+				</div>
+			</div>
+			<div class="form-group row" style="margin-bottom: 7px;">
+				<div class="col-1 col-md-2">
+					<label for="currency">Currency</label>
+					<select name="currency" id="currency" class="form-control">
+						<option value="USD" selected>USD $</option>
+						<option value="CNY">CNY &yen</option>
+					</select>
+				</div>
+				<div class="col-11 col-md-10">
+					<label for="amount">Amount</label>
+					<input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0.01">
+				</div>
+			</div>
+			
+
+			<div class="form-group">
+				<label for="content" class="sr-only">Notes</label>
+				<textarea class="form-control" id="content" rows="2" placeholder="Notes"></textarea>
+			</div>
+
+			<button type="submit" class="btn btn-info btn-lg btn-block">Submit</button>
+		</form>
+	</div>
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
