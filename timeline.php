@@ -40,6 +40,14 @@ $connect->close();
             {
                 height: 200px;
             }
+            h2
+            {
+                font-size: 10px;
+            }
+            p
+            {
+                font-size: 10px;
+            }
         </style>
 		
     </head>  
@@ -93,12 +101,9 @@ $connect->close();
                     </div>
 		</div>
 
-    <script>
+<script>
 $(document).ready(function(){
-    jQuery('.timeline').timeline({
-        mode: 'vertical',
-        visibleItems: 3,
-    });
+    jQuery('.timeline').timeline();
 });
 </script>
     </body>  
