@@ -32,7 +32,7 @@ $connect->close();
         
         <script src="js/jquery.js"></script>
         <script src="js/timeline.min.js"></script>
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
         <link rel="stylesheet" href="css/timeline.min.css" />
         <link rel="stylesheet" type="text/css" href="style.css">
         <style type="text/css">
@@ -69,6 +69,7 @@ $connect->close();
                 </div>
             </div>
         </nav>
+        <div style="height: 55px;"></div>
 
         <div class="container">
                 	<div class="timeline">
