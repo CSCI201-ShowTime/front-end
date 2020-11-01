@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Account Page</title>
+  <title>Group Page</title>
 	<meta charset="utf-8">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link rel="stylesheet" type="text/css" href="navCss.css">
+    <link rel="stylesheet" type="text/css" href="groupCss.css">
 </head>
 <body>
   <!--This is the nagivation bar-->
@@ -43,94 +44,66 @@
   </div>
   <!--Above is the nagivation bar-->
   <!--floating hoverable side navigation bar-->
-  <div id="mySidenav">
+  <div id="mySidenav" class="sidenav">
     <a href="home.html" id="home">Home</a>
     <a href="create_diary.html" id="diary">+Diary</a>
     <a href="create_event.html" id="event">+Event</a>
     <a href="create_reminder.html" id="reminder">+Reminder</a>
     <a href="create_transaction.html" id="transaction">+Transaction</a>
   </div>
-  <div style="height: 60px;"></div>
+    <div style="height: 60px;"></div>
+  <!--Groups Heading-->
   <div class="container">
   <div class="row">
     <div class="col title">
-      <h1>Tommy Trojan </h1>
+      <h1>Group Name 1 </h1>
     </div>
   </div>
 </div>
-  <div class="container-fluid">
-    <!--Avatar-->
-    <div class="container">
-      <div class="row">
-      <img src="images/account.png" alt="Avatar" class="avatar">
+<hr style="margin: 30px 2% 20px 2%;">
+<!--User Cards-->
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="images/account.png" class="cardImg" alt="User1" style="width:70%">
+      <div class="container">
+        <h2>User1</h2>
+        <p class="title">BlahBlahBlah</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Make Transaction</button></p>
       </div>
-      </div>
-      <!--User Info-->
-      <div style="height: 30px;"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col center-align"><p>Name: Tommy Trojan</p></div>
-      </div>
-      <div class="row">
-        <div class="col center-align"><p>Email: trojant@usc.edu</p></div>
-      </div>
-      <div class="row">
-          <div class="col center-align"><p>Personal Info: I am a CS student studying
-            at University of Southern California</p></div>
-        </div>
     </div>
   </div>
-    <!--Button-->
-    <div class="fluid-container">
-      <div class="row center-align">
-        <div class="col">
-     <button type="button" class="btn-block btn-info">Edit Profile</button>
-     </div>
-     <div class="col">
-    <button type="button" class="btn-block btn-info">Change Password</button>
+
+  <div class="column">
+    <div class="card">
+      <img src="images/account.png" class="cardImg" alt="User2" style="width:70%">
+      <div class="container">
+        <h2>User2</h2>
+        <p class="title">BlahBlahBlah</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Make Transaction</button></p>
+      </div>
     </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="images/account.png" class="cardImg" alt="User3" style="width:70%">
+      <div class="container">
+        <h2>User3</h2>
+        <p class="title">BlahBlahBlah</p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>example@example.com</p>
+        <p><button class="button">Make Transaction</button></p>
+      </div>
     </div>
-    </div>
-    <!--Group Cards-->
-    <hr style="margin: 30px 2% 20px 2%;">
-	        <h1 class="center-align">Groups</h1>
-	        <div class="groups">
-            <div style="height: 20px;"></div>
-	        	<a href="groups.html">
-		        	<div class="card group-block">
-						<div class="card-body">
-	    					<h5 class="card-title">User Group1</h5>
-	    					<h6 class="card-subtitle">Group Name</h6>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-		        	<div class="card group-block">
-						<div class="card-body">
-	    					<h5 class="card-title">User Group2</h5>
-	    					<h6 class="card-subtitle">Group Name</h6>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-		        	<div class="card group-block">
-						<div class="card-body">
-	    					<h5 class="card-title">User Group3</h5>
-	    					<h6 class="card-subtitle">Group Name</h6>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-		        	<div class="card group-block">
-						<div class="card-body">
-	    					<h5 class="card-title">User Group4</h5>
-	    					<h6 class="card-subtitle">Group Name</h6>
-						</div>
-					</div>
-				</a>
-				<div class="clearfloating"></div>
-	        </div>
-            <hr style="margin: 30px 2% 20px 2%;">
+  </div>
+
+</div>
+<hr style="margin: 30px 2% 20px 2%;">
 </body>
 <footer>
   <p class="center-align">Author: ShowTime Team<br>

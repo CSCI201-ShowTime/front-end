@@ -1,4 +1,4 @@
-#mySidenav{
+.sidenav{
   z-index: 100;
 }
 #mySidenav a{
