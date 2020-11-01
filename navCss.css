@@ -1,0 +1,43 @@
+#mySidenav{
+  z-index: 100;
+}
+#mySidenav a{
+  position: fixed;
+  left: -155px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 180px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+#mySidenav a:hover {
+  left: 0;
+}
+
+
+#home {
+  top: 80px;
+  background-color: #0497CC;
+}
+
+#diary {
+  top: 150px;
+  background-color: #307A95;
+}
+
+#event {
+  top: 220px;
+  background-color: #025F80;
+}
+
+#reminder {
+  top: 290px;
+  background-color: #41A7CC
+}
+
+#transaction {
+  top: 360px;
+  background-color: #02394D
+}
