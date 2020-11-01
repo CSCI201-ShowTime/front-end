@@ -36,15 +36,16 @@
         ['Clothes', 1],
         ['Fun', 1],
         ['Gifts', 1],
-        ['Transportation', 2]
+        ['Transportation', 2],
+        ['Pet', 1]
       ]);
 
       // Set chart options
-      var options = {'title':'Spending Analysis',
-      				 pieHole: 0.4,
+      var options = {pieHole: 0.4,
       				 'chartArea': {'width': '100%', 'height': '80%'},
-               'legend': {'position': 'bottom'},
-                 	 backgroundColor: 'transparent'};
+               		 'legend': {'position': 'bottom'},
+                 	 backgroundColor: 'transparent'
+                 	};
 
       // Instantiate and draw our chart, passing in some options.
       var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
