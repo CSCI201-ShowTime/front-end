@@ -27,3 +27,40 @@ body.cloudy {
 body.rainy {
     background-image: linear-gradient(to right top, #637c7b, #718e8c, #7ea09e, #8db2b0, #9bc5c3);
 }
+
+
+.weather {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 100%;
+}
+
+.weather p {
+    width: 33.3%;
+    height: 100%;
+    margin: 0;
+}
+
+.weather p i {
+    font-size: 120%;
+    margin-right: 3%;
+}
+
+.nav-divider {
+    height: 58px;
+}
+
+@media (max-width: 767px) {
+    .weather p i {
+        width: 100%;
+    }
+
+    #reroro {
+        font-size: 50%;
+    }
+
+    .nav-divider {
+        height: 67px;
+    }
+}
