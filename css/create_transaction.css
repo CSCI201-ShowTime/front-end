@@ -8,3 +8,9 @@
 	background-color: #ebf4fa;
 	padding: 30px;
 }
+
+@media(max-width: 767px) {
+	.wrapper {
+		width: 90%;
+	}
+}

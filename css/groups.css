@@ -45,6 +45,27 @@
     margin: auto;
 }
 
+.line-break {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.divider {
+    border-top: 5px double #025f80;
+}
+
 .group {
     margin-bottom: 15px;
+}
+
+@media(max-width: 991px) {
+    .user {
+        width: 48%;
+    }
+}
+
+@media (max-width: 767px) {
+    .user {
+        width: 98%;
+    }
 }

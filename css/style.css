@@ -52,50 +52,87 @@ footer a:hover {
 
 /* Style for Sidebar*/
 .sidenav{
-  z-index: 1000;
+    z-index: 1000;
 }
 #mySidenav a{
-  position: fixed;
-  left: -155px;
-  transition: 0.3s;
-  padding: 15px;
-  width: 180px;
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  border-radius: 0 5px 5px 0;
+    position: fixed;
+    left: -155px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 180px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
 }
 #mySidenav a:hover {
-  left: 0;
+    left: 0;
 }
 
 
 #first {
-  top: 80px;
-  background-color: #0497CC;
-  z-index: 1000;
+    top: 80px;
+    background-color: #0497CC;
+    z-index: 1000;
 }
 
 #second {
-  top: 150px;
-  background-color: #307A95;
-  z-index: 1000;
+    top: 150px;
+    background-color: #307A95;
+    z-index: 1000;
 }
 
 #third {
-  top: 220px;
-  background-color: #025F80;
-  z-index: 1000;
+    top: 220px;
+    background-color: #025F80;
+    z-index: 1000;
 }
 
 #fourth {
-  top: 290px;
-  background-color: #41A7CC;
-  z-index: 1000;
+    top: 290px;
+    background-color: #41A7CC;
+    z-index: 1000;
 }
 
 #fifth {
-  top: 360px;
-  background-color: #02394D;
-  z-index: 1000;
+    top: 360px;
+    background-color: #02394D;
+    z-index: 1000;
+}
+
+
+/* hide sidebar in small view */
+@media (max-width: 767px) {
+    .sidenav {
+        display: none;
+    }
+    .nav-icons {
+        visibility: visible !important;
+    }
+}
+
+.nav-icons {
+    margin-left: -20px;
+    visibility: hidden;
+}
+
+.icon {
+    /*visibility: hidden;*/
+    padding-left: 7%;
+    padding-right: 7%;
+    margin-top: -20px;
+    margin-bottom: -10px;
+    height: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    width: 100%;
+    font-size: 150%;
+}
+
+.nav-icons a {
+    color: #c3d6e7;
+}
+
+.nav-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
