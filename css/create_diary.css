@@ -13,3 +13,9 @@
 .diary-wrapper form {
 	margin-top: 20px;
 }
+
+@media(max-width: 767px) {
+	.diary-wrapper {
+		margin-top: 15px;
+	}
+}
