@@ -57,33 +57,40 @@
         <div class="form-wrapper">
             <form action="" method="POST" onsubmit="return checkRequirement(this);">
                 <div class="form-group row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6 fname">
                         <label class="sr-only" for="fname">First Name</label>
                         <input type="text" class="form-control" placeholder="First name" name="fname" id="fname" />
+                        <small id="fname-error" class="error">Invalid First Name!</small>
                     </div>
                     <div class="col-12 col-md-6">
                         <label class="sr-only" for="lname">Last Name</label>
                         <input type="text" class="form-control" placeholder="Last name" name="lname" id="lname" />
+                        <small id="lname-error" class="error">Invalid Last Name!</small>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
                         <label class="sr-only" for="email">Email</label>
                         <input type="email" class="form-control" placeholder="Email" name="email" id="email" />
+                        <small id="email-error" class="error">Invalid Email!</small>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
                         <label class="sr-only" for="password">Password</label>
-                        <input type="password" id="inputPassword5" class="form-control" name="password" placeholder="Password" />
+                        <input type="password" id="password" class="form-control" name="password" placeholder="Password"/>
+                        <div class="alert alert-info" role="alert" id="password-note"><small>Must contain a lowercase letter, an uppercase letter, a number, with minimum length 8. No Space allowed!</small></div>
+                        <small id="password-error" class="error"></small>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col">
                         <label class="sr-only" for="confirmPassword">Confirm Password</label>
                         <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" id="confirmPassword" />
+                        <small id="confirmPassword-error" class="error">Not match password!</small>
                     </div>
                 </div>
+                <div id="error-message"></div>
                 <button type="submit" class="btn btn-info">Sign Up</button>
             </form>
         </div>
