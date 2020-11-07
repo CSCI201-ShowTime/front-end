@@ -11,5 +11,26 @@ document.querySelector("form").onsubmit = function(event) {
 	} else {
 		document.querySelector(".error").innerHTML = "";
 		document.querySelector(".error").style.display = "none";
+		let email = $("#email").val();
+		let password = $("#password").val();
+		$.ajax({
+			method: "GET",
+			url: "http://localhost:8080/api/auth",
+			data: {
+	    		email: email,
+	    		password: password
+			}
+		})
+		.done(function(results) {
+			
+
+		})
+		.fail(function( jqXHR, textStatus, errorThrown ) {
+			if (jqXHR.status == 401) {
+				alert( "Unmatched email and password!" );
+			} else {
+				console.log("error!");
+			}
+		});
 	}
 }
