@@ -1,14 +1,14 @@
 document.querySelector("form").onsubmit = function(e) {
 	e.preventDefault();
 	let title = document.querySelector("#title").value.trim();
-	let date = document.querySelector("#date").value;
+	let date = new Date(document.querySelector("#date").value);
 	let content = document.querySelector("#content").value;
 	if (title.length == 0) {
 		document.querySelector("#title + .error").style.display = "block";
 	} else {
 		document.querySelector("#title + .error").style.display = "none";
 	}
-	if (date.length == 0) {
+	if (isNaN(date.getTime())) {
 		document.querySelector("#date + .error").style.display = "block";
 	} else {
 		document.querySelector("#date + .error").style.display = "none";
@@ -27,8 +27,10 @@ document.querySelector("#title").onchange = function() {
 }
 
 document.querySelector("#date").onchange = function() {
-	let date = document.querySelector("#date").value.trim();
-	if (date.length != 0) {
+	let date = new Date(document.querySelector("#date").value);
+	if (isNaN(date.getTime())) {
+		document.querySelector("#date + .error").style.display = "block";
+	} else {
 		document.querySelector("#date + .error").style.display = "none";
 	}
 }
