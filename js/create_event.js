@@ -1,7 +1,6 @@
 document.querySelector("form").onsubmit = function(e) {
 	e.preventDefault();
 	let title = document.querySelector("#title").value.trim();
-	// document.querySelector("#title").value = "";
 	document.querySelector("#title").value = title;
 	if (title.length == 0) {
 		document.querySelector("#title + .error").style.display = "block";
@@ -33,7 +32,7 @@ document.querySelector("form").onsubmit = function(e) {
 	let repeat = document.querySelector("#repeat").value;
 	let notification = document.querySelector("#notification").value;
 	let notificationTime = new Date(notification);
-	if ( isNaN(endDate.getTime()) ) {
+	if ( isNaN(notificationTime.getTime()) ) {
 		document.querySelector("#notification + .error").innerHTML = "Invalid Date";
 		document.querySelector("#notification + .error").style.display = "block";
 	} else {
