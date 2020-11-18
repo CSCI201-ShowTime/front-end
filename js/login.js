@@ -13,6 +13,13 @@ document.querySelector("form").onsubmit = function(event) {
 		document.querySelector(".error").style.display = "none";
 		let email = $("#email").val();
 		let password = $("#password").val();
+
+		// Li (v0.4.5): add encrypts password before sending to server again
+		var encoded = CryptoJS.MD5(password + "ShoWTimE");
+		document.querySelector("#password").value = encoded;
+		
+		password = $("#password").val();
+
 		$.ajax({
 			method: "GET",
 			url: "http://localhost:8080/api/auth",
@@ -22,7 +29,7 @@ document.querySelector("form").onsubmit = function(event) {
 			}
 		})
 		.done(function(results) {
-			
+			window.location.href = "/timeline";
 
 		})
 		.fail(function( jqXHR, textStatus, errorThrown ) {
