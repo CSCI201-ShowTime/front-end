@@ -26,6 +26,43 @@ document.querySelector("form").onsubmit = function(e) {
 		document.querySelector("#amount + .error").innerHTML = "";
 		document.querySelector("#amount + .error").style.display = "none";
 	}
+	let content = document.querySelector("#content").value;
+	
+	$.get("/api/userid", {}, function(data){
+  		$.ajax({
+		method: "POST",
+		url: "/api/event/budget",
+		// Fixed: contentType must be explicitly defined if submitted as a form
+		// form auto-submits as "application/x-www-form-urlencoded"
+		contentType: "application/json",
+		// Fixed: for JSON, data must be explicitly parsed
+		data: JSON.stringify({
+//			eventid: ,
+			amount: amount,
+			category: "default",
+    		userid: data,
+    		start: date,
+			end: date,
+    		title: title,
+			description: content,
+			visibility: 1,
+			type: "budget",
+			location: "Los Angeles"
+		})
+		})
+		.done(function( data, textStatus, jqXHR ) {
+			// on success logic, redirect?			
+			window.location.href = "/timeline";
+		})
+		.fail(function( jqXHR, textStatus, errorThrown ) {
+			alert("Or here");
+			if (jqXHR.status == 401) {
+				alert( "Unmatched email and password!" );
+			} else {
+				console.log("error!");
+			}
+		});
+	});
 }
 
 
