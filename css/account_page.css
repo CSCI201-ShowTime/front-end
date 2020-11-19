@@ -1,9 +1,32 @@
 /* CSS style for accout_page.css */
+
 #change_profile{
 	display: none;
 }
 #change_password{
 	display: none;
+}
+input[type="file"]{
+	display:none;
+}
+
+label{
+	display: block;
+  text-align: center;
+  line-height: 150%;
+  font-size: .85em;
+	color:#025f80;
+	padding: 5px;
+	align-items: center;
+	/*padding-top: 20px;*/
+	dispay:flex;
+	justify-content: center;
+	/*margin: auto;*/
+}
+.file{
+	display:none;
+	text-align: center;
+	margin:auto;
 }
 .avatar {
 	margin: auto;

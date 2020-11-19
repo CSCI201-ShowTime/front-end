@@ -9,8 +9,8 @@ function getLocation() {
 }
 
 function weatherCallback2(position) {
-  //fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&appid=' + apiKey)
-  fetch('https://api.openweathermap.org/data/2.5/weather?lat=34.07&lon=118.32&appid=' + apiKey)
+  fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&appid=' + apiKey)
+  //fetch('https://api.openweathermap.org/data/2.5/weather?lat=9&lon=18&appid=' + apiKey)
   .then(function(resp){
   return resp.json() //convert data to json
 })

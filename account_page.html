@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/weather.css">
     <link rel="stylesheet" type="text/css" href="css/account_page.css">
-    <script type="text/javascript" src="js/account_page.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900" rel="stylesheet">
 </head>
 <body>
@@ -70,10 +69,21 @@
     </div>
     <div class="container-fluid">
         <!--Avatar-->
-        <div class="container">
-            <div class="row">
-                <img src="images/account.png" alt="Avatar" class="avatar">
-            </div>
+        <div class="profile-pic-div">
+          <div class="row">
+              <img src="images/account.png" alt="Avatar" class="avatar" id="photo">
+
+              <!--<button for="file" id="uploadBtn">Choose Photo</label>-->
+          </div>
+          <input type="file" id="file" accept="image/*">
+          <label for="file">
+            Change Your avatar
+          </label>
+
+          <!--MODIFYING
+          <div class="row">
+              <img src="images/account.png" alt="Avatar" class="avatar">
+          </div>-->
         </div>
         <!--User Info-->
         <div style="height: 30px;"></div>
@@ -146,7 +156,9 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
+
     <!--Group Cards-->
+    <!--
     <hr style="margin: 30px 2% 20px 2%;">
     <h1 class="text-center">Groups</h1>
     <div style="height: 20px;"></div>
@@ -184,6 +196,7 @@
             </div>
         </a>
     </div>
+  -->
     <hr style="margin: 30px 2% 20px 2%;">
     <div class="bottom-menu">
         <div style="height: 55px;"></div>
@@ -212,6 +225,7 @@
             <a href="https://github.com/CSCI201-ShowTime" target="_blank"><i class="fab fa-github"></i> ShowTime</a>
         </div>
     </footer>
+    <script type="text/javascript" src="js/account_page.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="js/weather.js"></script>
