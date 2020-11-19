@@ -44,6 +44,42 @@ document.querySelector("form").onsubmit = function(e) {
 		invitee = document.querySelector("#invitee").value;
 	}
 	let notes = document.querySelector("#notes").value;
+	
+	
+	$.get("/api/userid", {}, function(data){
+  		$.ajax({
+		method: "POST",
+		url: "/api/event/durationevent",
+		// Fixed: contentType must be explicitly defined if submitted as a form
+		// form auto-submits as "application/x-www-form-urlencoded"
+		contentType: "application/json",
+		// Fixed: for JSON, data must be explicitly parsed
+		data: JSON.stringify({
+			remind_time: notificationTime,
+			category: "default",
+    		userid: data,
+    		start: startDate,
+			end: endDate,
+    		title: title,
+			description: notes,
+			visibility: 1,
+			type: "durationevent",
+			location: location
+		})
+		})
+		.done(function( data, textStatus, jqXHR ) {
+			// on success logic, redirect?			
+			window.location.href = "/timeline";
+		})
+		.fail(function( jqXHR, textStatus, errorThrown ) {
+			alert("Or here");
+			if (jqXHR.status == 401) {
+				alert( "Unmatched email and password!" );
+			} else {
+				console.log("error!");
+			}
+		});
+	});
 }
 
 document.querySelector("#startTime").oninput = function() {

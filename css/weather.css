@@ -17,9 +17,7 @@ h1 {
     color: #fff;
     font-size: 5em;
 }
-
 body.sunny {
-
     /*background-image: linear-gradient(to right top, #ff4e50, #ff713e, #ff932b, #ffb41d, #f9d423);*/
 }
 body.cloudy {
@@ -28,7 +26,7 @@ body.cloudy {
 body.rainy {
     /*background-image: linear-gradient(to right top, #637c7b, #718e8c, #7ea09e, #8db2b0, #9bc5c3);*/
 }
-
+*/
 
 .weather {
     margin-left: auto;
