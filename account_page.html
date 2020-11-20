@@ -229,5 +229,34 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="js/weather.js"></script>
+
+    <script>
+	var myUrl = '/api/userinfo';
+	//alert(myUrl);
+    var parsedJson;
+	
+    $.ajax({
+		url: myUrl,
+		type: 'GET',
+		contentType: 'application/json; charset=utf-8',
+		success: function (data, textStatus, xhr) {
+			myJSON = JSON.stringify(data);
+			parsedJson = JSON.parse(myJSON); 
+          	console.log(parsedJson);
+          	console.log(parsedJson.fname);
+          	console.log(parsedJson.lname);
+		},
+		error: function (data, textStatus, xhr) {
+			alert(data.responseText);
+		}
+	})
+      
+      
+    </script>
+    
+    <!-- Bilibiliy (v0.2.6): Server-side Communication Script -->
+    <script type="text/javascript" src="js/server/logout-server.js"></script>
+    <!-- Bilibiliy (v0.2.6): This should be integrated into account_page.js -->
+    <script type="text/javascript" src="js/server/logout-navbar-temp.js"></script>
 </body>
 </html>
