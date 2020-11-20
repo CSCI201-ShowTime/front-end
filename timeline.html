@@ -117,6 +117,20 @@
     <div class="container mt-5 mb-5">
       <div class="row">
         <div class="col-md-10 offset-md-1">
+        <form>
+      <div class="form-group">
+        <label for="date">Start From</label>
+        <input type="datetime-local" class="form-control" id="start" name="start">
+        <small class="error">Invalid Date!</small>
+      </div>
+      <div class="form-group">
+        <label for="date">Until</label>
+        <input type="datetime-local" class="form-control" id="end" name="end">
+        <small class="error">Invalid Date!</small>
+      </div>
+      <button type="submit" class="btn btn-info btn-lg btn-block" id="submitBtn">Search</button>
+    </form>
+     <h4><br> </h4>
           <h4> My Timeline </h4>
           <ul class="timeline" id="mytimeline">
           </ul>
@@ -132,102 +146,130 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="js/weather.js"></script>
     <script>
-    var responseUserID = 123;
-	function getUserId(){
-		var result = 1;
-		
-		$.ajax({
-			url : '/api/userid',
-			type : "GET",
-			async : false,
-			success : function(data) {
-				result = data;
-			}
-		});
-		
-		return result;
-	}
-	
-	$.when(getUserId()).done(function(result){
-		var responseUserID =  result;
-		
-	}).fail(function(){
-		alert("$.get 失败!");
-	});
-	
-	var userId = getUserId();
-	// console.log(userId);
-	
-	var searchStartTime = "2020-11-05T00:59:55";
-	var searchEndTime = "2020-11-25T23:59:55";
-	
-	let timeline = document.querySelector("#mytimeline");
-	var myUrl = '/api/event/topEvent' + '?userid=' + userId + '&start=' + searchStartTime + "&start=" + searchEndTime;
-	//alert(myUrl);
-    var parsedJson;
-	
-    $.ajax({
-		url: myUrl,
-		type: 'GET',
-		contentType: 'application/json; charset=utf-8',
-		success: function (data, textStatus, xhr) {
-			myJSON = JSON.stringify(data);
-			parsedJson = JSON.parse(myJSON); 
-          	console.log(parsedJson);
-          	
-			while( timeline.hasChildNodes()) {
-				timeline.removeChild(timeline.lastChild);
-			}
+    let today = new Date();
+    let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(today);
+    let mo = new Intl.DateTimeFormat('en', { month: '2-digit' }).format(today);
+    let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(today);
+    let start = `${ye}-${mo}-${da}T00:00`;
+    let end = `${ye}-${mo}-${da}T23:59`;
+    document.querySelector("#start").value = start;
+    document.querySelector("#end").value = end;
+    refreshPage(start, end);
+  document.querySelector("form").onsubmit = function(e){
+  
+    e.preventDefault();
+    let start = document.querySelector("#start").value;
+    let end = document.querySelector("#end").value;
+    let startObj = new Date(start);
+    let endObj = new Date(end);
+    if ( isNaN(startObj.getTime()) || isNaN(endObj.getTime()) || (startObj.getTime() > endObj.getTime()) ) {
+      document.querySelector("#start + .error").style.display = "block";
+      document.querySelector("#end + .error").style.display = "block";
+    } else {
+      document.querySelector("#start + .error").style.display = "none";
+      document.querySelector("#end + .error").style.display = "none";
+      console.log(start);
+      console.log(end);
+      refreshPage(start, end);
+    }
+  }
 
-			for (var i = 0; i < parsedJson.length; i++) {
-				let li = document.createElement("li");
-				let a1 = document.createElement("a");
-				let a2 = document.createElement("a");
-				let text = document.createElement("p");
-				let property = document.createElement("p");
-				if (parsedJson[i].type == "reminder") {
-					a1.innerHTML = "Reminder: " + parsedJson[i].title;
-					if (parsedJson[i].priority < 5){
-						property.innerHTML = "Priority: Low";
-					} else if (parsedJson[i].priority > 5){
-						property.innerHTML = "Priority: High";
-					} else {
-						property.innerHTML = "Priority: Midium";
-					}
-					property.innerHTML += " Remind Time: " + parsedJson[i].remind_time;
-				} else if (parsedJson[i].type == "durationevent") {
-					a1.innerHTML = "Duration Event: " + parsedJson[i].title;
-					property.innerHTML = "Remind Time: " + parsedJson[i].remind_time;
-				} else if (parsedJson[i].type == "diary") {
-					a1.innerHTML = "Diary: " + parsedJson[i].title;
-				} else if (parsedJson[i].type == "budget") {
-					a1.innerHTML = "Budget: " + parsedJson[i].title;
-					property.innerHTML = "Amount: $" + parsedJson[i].amount;
-					property.innerHTML += " Category: " + parsedJson[i].category;
-				} else {
-					a1.innerHTML = "Event: " + parsedJson[i].title;
-				}
-				
-				a1.href = "#";
-				a2.innerHTML = parsedJson[i].start;
-				a2.href = "#";
-				a2.classList.add('float-right');
-				console.log(parsedJson[i].description); 
-				text.innerHTML = parsedJson[i].description;
-				li.appendChild(a1);
-				li.appendChild(a2);
-				li.appendChild(text);
-				li.appendChild(property);
-				timeline.appendChild(li);
-			}
-		},
-		error: function (data, textStatus, xhr) {
-			alert(data.responseText);
-		}
-	})
+
+  function refreshPage(searchStartTime, searchEndTime){
+    
+      var responseUserID = 123;
+    function getUserId(){
+      var result = 1;
       
+      $.ajax({
+        url : '/api/userid',
+        type : "GET",
+        async : false,
+        success : function(data) {
+          result = data;
+        }
+      });
+      
+      return result;
+    }
+    
+    $.when(getUserId()).done(function(result){
+      var responseUserID =  result;
+      
+    }).fail(function(){
+      alert("$.get failed");
+    });
+    
+    var userId = getUserId();
+      let timeline = document.querySelector("#mytimeline");
+      var myUrl = '/api/event/topEvent' + '?userid=' + userId + '&start=' + searchStartTime + "&start=" + searchEndTime;
+    var parsedJson;
+  
+    $.ajax({
+    url: myUrl,
+    type: 'GET',
+    contentType: 'application/json; charset=utf-8',
+    success: function (data, textStatus, xhr) {
+      myJSON = JSON.stringify(data);
+      parsedJson = JSON.parse(myJSON); 
+            
+      while( timeline.hasChildNodes()) {
+        timeline.removeChild(timeline.lastChild);
+      }
+
+      for (var i = 0; i < parsedJson.length; i++) {
+        let li = document.createElement("li");
+        let a1 = document.createElement("a");
+        let a2 = document.createElement("a");
+        let text = document.createElement("p");
+        let property = document.createElement("p");
+        if (parsedJson[i].type == "reminder") {
+          a1.innerHTML = "Reminder: " + parsedJson[i].title;
+          if (parsedJson[i].priority < 5){
+            property.innerHTML = "Priority: Low";
+          } else if (parsedJson[i].priority > 5){
+            property.innerHTML = "Priority: High";
+          } else {
+            property.innerHTML = "Priority: Midium";
+          }
+          property.innerHTML += " Remind Time: " + parsedJson[i].remind_time;
+        } else if (parsedJson[i].type == "durationevent") {
+          a1.innerHTML = "Duration Event: " + parsedJson[i].title;
+          property.innerHTML = "Remind Time: " + parsedJson[i].remind_time;
+        } else if (parsedJson[i].type == "diary") {
+          a1.innerHTML = "Diary: " + parsedJson[i].title;
+        } else if (parsedJson[i].type == "budget") {
+          a1.innerHTML = "Budget: " + parsedJson[i].title;
+          property.innerHTML = "Amount: $" + parsedJson[i].amount;
+          property.innerHTML += " Category: " + parsedJson[i].category;
+        } else {
+          a1.innerHTML = "Event: " + parsedJson[i].title;
+        }
+        
+        a1.href = "#";
+        a2.innerHTML = parsedJson[i].start;
+        a2.href = "#";
+        a2.classList.add('float-right');
+        text.innerHTML = parsedJson[i].description;
+        li.appendChild(a1);
+        li.appendChild(a2);
+        li.appendChild(text);
+        li.appendChild(property);
+        timeline.appendChild(li);
+      }
+    },
+    error: function (data, textStatus, xhr) {
+      alert(data.responseText);
+    }
+  })
+  }
+    
       
     </script>
-
+    
+  <!-- Bilibiliy (v0.2.6): Server-side Communication Script -->
+    <script type="text/javascript" src="js/server/logout-server.js"></script>
+    <!-- Bilibiliy (v0.2.6): This should be integrated into account_page.js -->
+    <script type="text/javascript" src="js/server/logout-navbar-temp.js"></script>
 </body>
 </html>
