@@ -13,13 +13,19 @@ document.querySelector("form").onsubmit = function(e) {
 	} else {
 		document.querySelector("#date + .error").style.display = "none";
 	}
+	let remindTime = new Date(document.querySelector("#remindTime").value)
+	if ( isNaN(remindTime.getTime()) ) {
+		document.querySelector("#remindTime + .error").style.display = "block";
+	} else {
+		document.querySelector("#remindTime + .error").style.display = "none";
+	}
 	let notes = document.querySelector("#notes").value;
 	
 	var myDate=new Date();
 	myDate.setDate(myDate.getDate()+1);
 	
 	let priority = document.querySelector("#priority").value;
-	
+	// let visibility = document.querySelector("#visibility").value;
 	$.get("/api/userid", { email: "email" }, function(data){
   		$.ajax({
 		method: "POST",
@@ -29,7 +35,7 @@ document.querySelector("form").onsubmit = function(e) {
 		contentType: "application/json",
 		// Fixed: for JSON, data must be explicitly parsed
 		data: JSON.stringify({
-			remind_time: myDate,
+			remind_time: remindTime,
 			priority: priority,
 //			eventid: ,
     		userid: data,
@@ -37,7 +43,7 @@ document.querySelector("form").onsubmit = function(e) {
 			end: deadline,
     		title: title,
 			description: notes,
-			visibility: 1,
+			visibility: 0,
 			type: "reminder",
 			location: "Los Angeles"
 		})

@@ -29,7 +29,7 @@ document.querySelector("form").onsubmit = function(e) {
 		document.querySelector("#finishTime + .error").innerHTML = "";
 		document.querySelector("#finishTime + .error").style.display = "none";
 	}
-	let repeat = document.querySelector("#repeat").value;
+	// let repeat = document.querySelector("#repeat").value;
 	let notification = document.querySelector("#notification").value;
 	let notificationTime = new Date(notification);
 	if ( isNaN(notificationTime.getTime()) ) {
@@ -39,12 +39,14 @@ document.querySelector("form").onsubmit = function(e) {
 		document.querySelector("#notification + .error").innerHTML = "";
 		document.querySelector("#notification + .error").style.display = "none";
 	}
+	/*
 	let invitee = "";
 	if (!document.querySelector("#private").checked) {
 		invitee = document.querySelector("#invitee").value;
 	}
+	*/
 	let notes = document.querySelector("#notes").value;
-	
+	let visibility = document.querySelector("#visibility").value;
 	
 	$.get("/api/userid", {}, function(data){
   		$.ajax({
@@ -62,7 +64,7 @@ document.querySelector("form").onsubmit = function(e) {
 			end: endDate,
     		title: title,
 			description: notes,
-			visibility: 1,
+			visibility: visibility,
 			type: "durationevent",
 			location: location
 		})
@@ -170,11 +172,11 @@ document.querySelector("#allday").onchange = function() {
 	}
 }
 
-
+/*
 document.querySelector("#private").onchange = function() {
 	if (this.checked) {
 		document.querySelector(".invitee-div").style.display = "none";
 	} else {
 		document.querySelector(".invitee-div").style.display = "block";
 	}
-}
+} */
