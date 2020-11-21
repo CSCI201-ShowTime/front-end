@@ -19,7 +19,7 @@ function budGet() {
         dataType: "json",
         contentType: "application/json",
         data: {
-            userid: userInfo.userid,
+            userid: userInfo.id,
             page: page,
             size: 5
         }

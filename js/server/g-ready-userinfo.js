@@ -3,7 +3,7 @@ var userInfo;
 $(document).ready(function() {
     $.ajax({
         method: "GET",
-        url: "/api/username",
+        url: "/api/userinfo",
         async: false,
         success: function(data, textStatus, jqXHR) {
             userInfo = data;
