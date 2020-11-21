@@ -118,21 +118,24 @@
       <div class="row">
         <div class="col-md-10 offset-md-1">
         <form>
-      <div class="form-group">
-        <label for="date">Start From</label>
-        <input type="datetime-local" class="form-control" id="start" name="start">
-        <small class="error">Invalid Date!</small>
-      </div>
-      <div class="form-group">
-        <label for="date">Until</label>
-        <input type="datetime-local" class="form-control" id="end" name="end">
-        <small class="error">Invalid Date!</small>
-      </div>
-      <button type="submit" class="btn btn-info btn-lg btn-block" id="submitBtn">Search</button>
-    </form>
-     <h4><br> </h4>
+			<div class="form-group">
+				<label for="date">Start From</label>
+				<input type="datetime-local" class="form-control" id="start" name="start">
+				<small class="error">Invalid Date!</small>
+			</div>
+			<div class="form-group">
+				<label for="date">Until</label>
+				<input type="datetime-local" class="form-control" id="end" name="end">
+				<small class="error">Invalid Date!</small>
+			</div>
+			<button type="submit" class="btn btn-info btn-lg btn-block" id="submitBtn">Search</button>
+		</form>
+		 <h4><br> </h4>
           <h4> My Timeline </h4>
-          <ul class="timeline" id="mytimeline">
+          <ul class="timeline" id="myTimeline">
+          </ul>
+          <h4> Public Timeline </h4>
+          <ul class="timeline" id="publicTimeline">
           </ul>
         </div>
       </div>
@@ -155,54 +158,55 @@
     document.querySelector("#start").value = start;
     document.querySelector("#end").value = end;
     refreshPage(start, end);
-  document.querySelector("form").onsubmit = function(e){
-  
-    e.preventDefault();
-    let start = document.querySelector("#start").value;
-    let end = document.querySelector("#end").value;
-    let startObj = new Date(start);
-    let endObj = new Date(end);
-    if ( isNaN(startObj.getTime()) || isNaN(endObj.getTime()) || (startObj.getTime() > endObj.getTime()) ) {
-      document.querySelector("#start + .error").style.display = "block";
-      document.querySelector("#end + .error").style.display = "block";
-    } else {
-      document.querySelector("#start + .error").style.display = "none";
-      document.querySelector("#end + .error").style.display = "none";
-      console.log(start);
-      console.log(end);
-      refreshPage(start, end);
-    }
-  }
+	document.querySelector("form").onsubmit = function(e){
+	
+		e.preventDefault();
+		let start = document.querySelector("#start").value;
+		let end = document.querySelector("#end").value;
+		let startObj = new Date(start);
+		let endObj = new Date(end);
+		if ( isNaN(startObj.getTime()) || isNaN(endObj.getTime()) || (startObj.getTime() > endObj.getTime()) ) {
+			document.querySelector("#start + .error").style.display = "block";
+			document.querySelector("#end + .error").style.display = "block";
+		} else {
+			document.querySelector("#start + .error").style.display = "none";
+			document.querySelector("#end + .error").style.display = "none";
+			console.log(start);
+			console.log(end);
+			refreshPage(start, end);
+		}
+	}
 
 
   function refreshPage(searchStartTime, searchEndTime){
-    
-      var responseUserID = 123;
-    function getUserId(){
-      var result = 1;
-      
-      $.ajax({
-        url : '/api/userid',
-        type : "GET",
-        async : false,
-        success : function(data) {
-          result = data;
-        }
-      });
-      
-      return result;
-    }
-    
-    $.when(getUserId()).done(function(result){
-      var responseUserID =  result;
-      
-    }).fail(function(){
-      alert("$.get failed");
-    });
-    
-    var userId = getUserId();
-      let timeline = document.querySelector("#mytimeline");
-      var myUrl = '/api/event/topEvent' + '?userid=' + userId + '&start=' + searchStartTime + "&start=" + searchEndTime;
+	  
+	    var responseUserID = 123;
+		function getUserId(){
+			var result = 1;
+			
+			$.ajax({
+				url : '/api/userid',
+				type : "GET",
+				async : false,
+				success : function(data) {
+					result = data;
+				}
+			});
+			
+			return result;
+		}
+		
+		$.when(getUserId()).done(function(result){
+			var responseUserID =  result;
+			
+		}).fail(function(){
+			alert("$.get failed");
+		});
+		
+		var userId = getUserId();
+      	let timeline = document.querySelector("#myTimeline");
+      	let publicTimeline = document.querySelector("#publicTimeline");
+  		var myUrl = '/api/event/personalEvent' + '?userid=' + userId + '&start=' + searchStartTime + "&start=" + searchEndTime;
     var parsedJson;
   
     $.ajax({
@@ -230,11 +234,11 @@
           } else if (parsedJson[i].priority > 5){
             property.innerHTML = "Priority: High";
           } else {
-            property.innerHTML = "Priority: Midium";
+            property.innerHTML = "Priority: Medium";
           }
           property.innerHTML += " Remind Time: " + parsedJson[i].remind_time;
         } else if (parsedJson[i].type == "durationevent") {
-          a1.innerHTML = "Duration Event: " + parsedJson[i].title;
+          a1.innerHTML = "Event: " + parsedJson[i].title;
           property.innerHTML = "Remind Time: " + parsedJson[i].remind_time;
         } else if (parsedJson[i].type == "diary") {
           a1.innerHTML = "Diary: " + parsedJson[i].title;
@@ -243,7 +247,7 @@
           property.innerHTML = "Amount: $" + parsedJson[i].amount;
           property.innerHTML += " Category: " + parsedJson[i].category;
         } else {
-          a1.innerHTML = "Event: " + parsedJson[i].title;
+          a1.innerHTML = "" + parsedJson[i].title;
         }
         
         a1.href = "#";
@@ -262,12 +266,49 @@
       alert(data.responseText);
     }
   })
-  }
-    
-      
+  
+  var publicUrl = '/api/event/publicEvent' + '?userid=' + userId + '&start=' + searchStartTime + "&start=" + searchEndTime;
+	  
+  $.ajax({
+	    url: publicUrl,
+	    type: 'GET',
+	    contentType: 'application/json; charset=utf-8',
+	    success: function (data, textStatus, xhr) {
+	      myJSON = JSON.stringify(data);
+	      parsedJson = JSON.parse(myJSON); 
+	            
+	      while( publicTimeline.hasChildNodes()) {
+	    	  publicTimeline.removeChild(publicTimeline.lastChild);
+	      }
+
+	      for (var i = 0; i < parsedJson.length; i++) {
+	        let li = document.createElement("li");
+	        let a1 = document.createElement("a");
+	        let a2 = document.createElement("a");
+	        let text = document.createElement("p");
+	        let property = document.createElement("p");
+	        a1.innerHTML = "Public Event: " + parsedJson[i].title;
+	         property.innerHTML = "Remind Time: " + parsedJson[i].remind_time;
+	        a1.href = "#";
+	        a2.innerHTML = parsedJson[i].start;
+	        a2.href = "#";
+	        a2.classList.add('float-right');
+	        text.innerHTML = parsedJson[i].description;
+	        li.appendChild(a1);
+	        li.appendChild(a2);
+	        li.appendChild(text);
+	        li.appendChild(property);
+	        publicTimeline.appendChild(li);
+	      }
+	    },
+	    error: function (data, textStatus, xhr) {
+	      alert(data.responseText);
+	    }
+	  })
+	  }    
     </script>
     
-  <!-- Bilibiliy (v0.2.6): Server-side Communication Script -->
+	<!-- Bilibiliy (v0.2.6): Server-side Communication Script -->
     <script type="text/javascript" src="js/server/logout-server.js"></script>
     <!-- Bilibiliy (v0.2.6): This should be integrated into account_page.js -->
     <script type="text/javascript" src="js/server/logout-navbar-temp.js"></script>
