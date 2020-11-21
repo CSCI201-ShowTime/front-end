@@ -111,7 +111,9 @@
     <div id="chart_wrap">
         <div id="chart_div"></div>
     </div>
+
     <hr class="bg-info line">
+
     <div id="transactions">
         <h2>
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-receipt-cutoff" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -120,8 +122,10 @@
             </svg>
             Transactions
         </h2>
+        <!-- BK -->
+        <!-- only one table-responsive is needed -->
         <div class="table-responsive">
-            <table class="table text-center table-striped table-hover table-responsive" style="word-wrap: break-word;">
+            <table class="table text-center table-striped table-hover" style="word-wrap: break-word;">
                 <thead>
                     <tr>
                         <th scope="col" style="width: 5%;">No.</th>
@@ -131,73 +135,22 @@
                         <th scope="col" style="width: 15%;">Time</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Snacks and Drinks</td>
-                        <td>$48.60</td>
-                        <td>2020-10-29</td>
+                <tbody id="budget-table-data">
+                    <tr v-for="budItem in budItems">
+                        <th scope="row">{{budItem.count}}</th>
+                        <td>{{budItem.title}}</td>
+                        <td>{{budItem.amount}}</td>
+                        <td>{{budItem.start}}</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Clothes</td>
-                        <td>$80.00</td>
-                        <td>2020-10-25</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Gift for Jack's birthday</td>
-                        <td>$20.00</td>
-                        <td>2020-10-14</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">4</th>
-                        <td>Uber to the airport</td>
-                        <td>$48.60</td>
-                        <td>2020-10-01</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">5</th>
-                        <td>Rent</td>
-                        <td>$500.00</td>
-                        <td>2020-09-30</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">6</th>
-                        <td>BBQ Takeout</td>
-                        <td>$30.00</td>
-                        <td>2020-09-26</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">7</th>
-                        <td>Movie Ticket</td>
-                        <td>$15.60</td>
-                        <td>2020-09-20</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">8</th>
-                        <td>Books</td>
-                        <td>$25.00</td>
-                        <td>2020-09-13</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">9</th>
-                        <td>New headphone</td>
-                        <td>$120.00</td>
-                        <td>2020-09-05</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">10</th>
-                        <td>Pet Food</td>
-                        <td>$100.00</td>
-                        <td>2020-09-01</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
     </div>
+
     <hr class="bg-info line">
-    <button class="btn btn-info btn-lg" type="button" style="width: 50%; margin-left: auto;margin-right: auto; margin-bottom: 15px; display: block;">Show More</button>
+
+    <button class="btn btn-info btn-lg" id="budget-show-more" type="button" style="width: 50%; margin-left: auto;margin-right: auto; margin-bottom: 15px; display: block;">Show More</button>
     <div class="bottom-menu">
         <div style="height: 55px;"></div>
         <div class="nav-icons d-flex flex-row justify-content-center fixed-bottom text-center">
@@ -219,18 +172,24 @@
         </div>
     </div>
 
-
-
-
     <footer>
         <div class="text-center">
             <a href="https://github.com/CSCI201-ShowTime" target="_blank"><i class="fab fa-github"></i> ShowTime</a>
         </div>
     </footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- BK: vue -->
+    <script src="https://unpkg.com/vue@next"></script>
     <script type="text/javascript" src="js/budget.js"></script>
     <script src="js/weather.js"></script>
+
+    <!-- BK: onload, get userinfo -->
+    <script type="text/javascript" src="js/server/g-ready-userinfo.js"></script>
+
+    <!-- BK -->
+    <script type="text/javascript" src="js/budget-server-get.js"></script>
 
     <!-- Bilibiliy (v0.2.6): Server-side Communication Script -->
     <script type="text/javascript" src="js/server/logout-server.js"></script>
