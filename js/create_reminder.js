@@ -35,12 +35,12 @@ document.querySelector("form").onsubmit = function(e) {
 		contentType: "application/json",
 		// Fixed: for JSON, data must be explicitly parsed
 		data: JSON.stringify({
-			remind_time: remindTime,
+			remind_time: document.querySelector("#remindTime").value,
 			priority: priority,
 //			eventid: ,
     		userid: data,
-    		start: new Date(),
-			end: deadline,
+    		start: document.querySelector("#date").value,
+			end: document.querySelector("#date").value,
     		title: title,
 			description: notes,
 			visibility: 0,

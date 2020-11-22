@@ -28,8 +28,8 @@ document.querySelector("form").onsubmit = function(e) {
 		data: JSON.stringify({
 //			eventid: ,
     		userid: data,
-    		start: date,
-			end: date,
+    		start: document.querySelector("#date").value,
+			end: document.querySelector("#date").value,
     		title: title,
 			description: content,
 			visibility: 1,
