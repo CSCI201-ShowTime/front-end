@@ -271,13 +271,13 @@
     //alert(myUrl);
     var parsedJson;
     
-    var userInfo = {
-        fname: "",
-        lname: "",
-        email: "",
-        id: 1,
-        password: ""
-    };
+    // var userInfo = {
+    //     fname: "",
+    //     lname: "",
+    //     email: "",
+    //     id: 1,
+    //     password: ""
+    // };
 
     
     $.ajax({
@@ -287,16 +287,16 @@
         success: function (data, textStatus, xhr) {
             myJSON = JSON.stringify(data);
             parsedJson = JSON.parse(myJSON); 
-            document.querySelector(".title h1").innerHTML =parsedJson.fname + ' ' + parsedJson.lname;
+            document.querySelector(".title h1").innerHTML = parsedJson.fname + ' ' + parsedJson.lname;
             document.querySelector("#fname").value = parsedJson.fname;
             document.querySelector("#lname").value = parsedJson.lname;
             document.querySelector("#email").value = parsedJson.email;
             // console.log(parsedJson);
-            userInfo.fname = parsedJson.fname;
-            userInfo.lname = parsedJson.lname;
-            userInfo.email = parsedJson.email;
-            userInfo.id = parsedJson.id;
-            userInfo.password = parsedJson.password;
+            // userInfo.fname = parsedJson.fname;
+            // userInfo.lname = parsedJson.lname;
+            // userInfo.email = parsedJson.email;
+            // userInfo.id = parsedJson.id;
+            // userInfo.password = parsedJson.password;
             // console.log(userInfo);
         },
         error: function (data, textStatus, xhr) {

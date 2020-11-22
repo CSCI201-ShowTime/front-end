@@ -101,6 +101,7 @@ function doneUserUpdate(data, textStatus, jqXHR) {
     $('#fname').val(data.fname);
     $('#lname').val(data.lname);
     // $('#email').val(data.email);
+    $(".title h1").html(data.fname + " " + data.lname);
     $("#fname, #lname").attr("readonly", true);
     $("#save").fadeOut("slow", function() {
         $("#editButton, #pwdButton").fadeIn("fast");
