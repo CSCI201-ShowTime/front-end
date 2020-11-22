@@ -278,8 +278,9 @@
 			myJSON = JSON.stringify(data);
 			parsedJson = JSON.parse(myJSON); 
           	document.querySelector(".title h1").innerHTML =parsedJson.fname + ' ' + parsedJson.lname;
-          	document.querySelector("#name").innerHTML =parsedJson.fname + ' ' + parsedJson.lname;
-          	document.querySelector("#email").innerHTML =parsedJson.email;
+          	document.querySelector("#fname").value = parsedJson.fname;
+            document.querySelector("#lname").value = parsedJson.lname;
+          	document.querySelector("#email").value = parsedJson.email;
 		},
 		error: function (data, textStatus, xhr) {
 			alert(data.responseText);
