@@ -9,16 +9,14 @@ document.querySelector("#editButton").onclick = function() {
 
 document.querySelector("#info-form").onsubmit = function(e) {
     e.preventDefault();
-    $("#info-form input, #info-form textarea").attr("readonly", true);
-    $("#save").fadeOut("slow", function() {
-        $("#editButton, #pwdButton").fadeIn("fast");
-    });
+    // $("#info-form input, #info-form textarea").attr("readonly", true);
 
     // AJAX 
-    var fname = $('#fname').val();
-    var lname = $('#lname').val();
-    var email = $('#email').val();
-    userUpdate(fname, lname, email, userInfo.password).done(doneUserUpdate);
+    var fname = $.trim($('#fname').val());
+    var lname = $.trim($('#lname').val());
+    if (fname.length != 0 && lname.length != 0) {
+      userUpdate(fname, lname, userInfo.email, userInfo.password).done(doneUserUpdate);
+    }
 }
 
 $("#password-form").on("click", function(event) {
@@ -71,7 +69,11 @@ function userUpdate(fname, lname, email, pswrd) {
 function doneUserUpdate(data, textStatus, jqXHR) {
     $('#fname').val(data.fname);
     $('#lname').val(data.lname);
-    $('#email').val(data.email);
+    // $('#email').val(data.email);
+    $("#fname, #lname").attr("readonly", true);
+    $("#save").fadeOut("slow", function() {
+        $("#editButton, #pwdButton").fadeIn("fast");
+    });
 };
 
 function changeEditButton(){
