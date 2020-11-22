@@ -13,10 +13,12 @@ document.querySelector("#info-form").onsubmit = function(e) {
     $("#save").fadeOut("slow", function() {
         $("#editButton, #pwdButton").fadeIn("fast");
     });
-    // more ajax processing
 
-
-
+    // AJAX 
+    var fname = $('#fname').val();
+    var lname = $('#lname').val();
+    var email = $('#email').val();
+    userUpdate(fname, lname, email, userInfo.password).done(doneUserUpdate);
 }
 
 $("#password-form").on("click", function(event) {
@@ -38,7 +40,8 @@ $("#change-password").on("submit", function(event) {
     // Validation
 
 
-    // ajax
+    // AJAX, requires MD5 hashing
+    userUpdate(userInfo.fname, userInfo.lname, userInfo.email, newPass).done(doneUserUpdate);
 
     // fade Out
     $(this).fadeOut('slow', function() {
@@ -47,6 +50,30 @@ $("#change-password").on("submit", function(event) {
     });
 });
 
+// AJAX request to user/PUT
+function userUpdate(fname, lname, email, pswrd) {
+    return $.ajax({
+        method: "PUT",
+        url: "/api/user",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify({
+            id: userInfo.id,
+            fname: fname,
+            lname: lname,
+            email: email,
+            password: pswrd
+        })
+    });
+}
+
+// on success AJAX to user/PUT, ...
+function doneUserUpdate(data, textStatus, jqXHR) {
+    $('#fname').val(data.fname);
+    $('#lname').val(data.lname);
+    $('#email').val(data.email);
+};
+
 function changeEditButton(){
   enableDisplay("change_profile");
   document.getElementById("fName").value = document.getElementById("name").innerHTML;
@@ -54,7 +81,6 @@ function changeEditButton(){
   document.getElementById("fInfo").value = document.getElementById("info").innerHTML;
   document.getElementById("fName").setAttribute("placeholder", document.getElementById("name").innerHTML);
 }
-
 // document.getElementById("pwdButton").onclick=function(){
 //   enableDisplay("change_password");
 //   //"password"
