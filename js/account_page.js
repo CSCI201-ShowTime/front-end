@@ -1,5 +1,23 @@
 var isClicked = false;
 
+document.querySelector("#editButton").onclick = function() {
+    $("#info-form input, #info-form textarea").attr("readonly", false);
+    $("#editButton, #pwdButton").fadeOut("slow", function() {
+        $("#save").fadeIn("fast");
+    });
+}
+
+document.querySelector("#save").onclick = function() {
+    $("#info-form input, #info-form textarea").attr("readonly", true);
+    $("#save").fadeOut("slow", function() {
+        $("#editButton, #pwdButton").fadeIn("fast");
+    });
+    // more ajax processing
+
+
+
+}
+
 function changeEditButton(){
   enableDisplay("change_profile");
   document.getElementById("fName").value = document.getElementById("name").innerHTML;

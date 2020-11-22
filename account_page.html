@@ -86,39 +86,58 @@
           </div>-->
         </div>
         <!--User Info-->
-        <div style="height: 30px;"></div>
-        <div class="container">
-            <div class="row">
+        <!-- <div style="height: 30px;"></div> -->
+        <div class="info-container">
+            
+            <!-- <div class="row">
                 <div class="col center-align">
                   <span>Name: </span>
                     <span id="name">Tommy Trojan</span>
                 </div>
-            </div>
-            <div style="height: 30px;"></div>
+            </div> -->
+            <form id="info-form">
+                <div class="form-group form-row">
+                    <div class="col">
+                        <input type="text" id="fname" class="form-control" placeholder="First name" readonly="true">
+                    </div>
+                    <div class="col">
+                        <input type="text" readonly="true" id="lname" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" class="form-control" placeholder="example@example.com" readonly="true">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" readonly="true" id="info" placeholder="Personal Info" rows="3"></textarea>
+                </div>
+            </form>
+            <!-- <div style="height: 30px;"></div>
             <div class="row">
                 <div class="col center-align">
                   <span>Email: </span>
                     <span id="email">trojant@usc.edu</span>
                 </div>
             </div>
-            <div style="height: 30px;"></div>
-            <div class="row">
+            <div style="height: 30px;"></div> -->
+            <!-- <div class="row">
                 <div class="col center-align">
                   <span>Personal Info: </span>
                     <span id="info">I am a CS student studying
                         at University of Southern California
                     </span>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
     <!--Button-->
-    <div style="height: 30px;"></div>
+    <!-- <div style="height: 30px;"></div> -->
     <div class="fluid-container wrapper">
         <div class="row center-align">
+            <button id="save" type="button" class="btn-block btn-info">Save</button>
             <div class="col">
-                <button id="editButton" onclick="changeEditButton()" type="button" class="btn-block btn-info">Edit Profile</button>
+                <button id="editButton" type="button" class="btn-block btn-info">Edit Profile</button>
+                <!-- <button id="editButton" onclick="changeEditButton()" type="button" class="btn-block btn-info">Edit Profile</button> -->
             </div>
             <div class="col">
                 <button id="pwdButton" onclick="enableDisplay('change_password')" type="button" class="btn-block btn-info">Change Password</button>
@@ -126,7 +145,7 @@
         </div>
     </div>
     <!--Normally hidden: change user profile-->
-    <div style="height: 30px;"></div>
+    <!-- <div style="height: 30px;"></div>
     <div class="container" id="change_profile">
         <form name="info_form" action="/action_page.php"
         onsubit="return validateForm()" method="post">
@@ -144,7 +163,7 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-    </div>
+    </div> -->
 
     <!--Normally hidden: change password-->
     <div class="container" id="change_password">

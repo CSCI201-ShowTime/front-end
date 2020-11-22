@@ -10,11 +10,15 @@ input[type="file"]{
 	display:none;
 }
 
+#save {
+	display: none;
+}
+
 label{
 	display: block;
-  text-align: center;
-  line-height: 150%;
-  font-size: .85em;
+	text-align: center;
+	line-height: 150%;
+	font-size: .85em;
 	color:#025f80;
 	padding: 5px;
 	align-items: center;
@@ -22,6 +26,12 @@ label{
 	dispay:flex;
 	justify-content: center;
 	/*margin: auto;*/
+	cursor: pointer;
+}
+.info-container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
 }
 .file{
 	display:none;
