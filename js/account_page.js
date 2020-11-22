@@ -1,7 +1,7 @@
 var isClicked = false;
 
 document.querySelector("#editButton").onclick = function() {
-    $("#info-form input, #info-form textarea").attr("readonly", false);
+    $("#fname, #lname").attr("readonly", false);
     $("#editButton, #pwdButton").fadeOut("slow", function() {
         $("#save").fadeIn("fast");
     });
@@ -14,8 +14,11 @@ document.querySelector("#info-form").onsubmit = function(e) {
     // AJAX 
     var fname = $.trim($('#fname').val());
     var lname = $.trim($('#lname').val());
+
+  userInfo.fname = fname;
+  userInfo.lname = lname;
     if (fname.length != 0 && lname.length != 0) {
-      userUpdate(fname, lname, userInfo.email, userInfo.password).done(doneUserUpdate);
+      userUpdate(userInfo.fname, userInfo.lname, userInfo.email, userInfo.password).done(doneUserUpdate);
     }
 }
 
@@ -43,7 +46,7 @@ $("#change-password").on("submit", function(event) {
       userUpdate(userInfo.fname, userInfo.lname, userInfo.email, encodedNewPass).done(function(data, textStatus, jqXHR) {
         // fade Out
         $(this).fadeOut('slow', function() {
-            $("#old").val("");
+            $("#confirm").val("");
             $("#new").val("");
         });
       });
@@ -61,16 +64,16 @@ function validatePassword(password) {
           if (/\s/.test(password)) {
             return "No whitespace allowed!";
           } else {
-            return "true";
+            return true;
           }
         } else {
-          return "Must contain an number!";
+          return false;
         }
     } else {
-      return "Must contain an uppercase letter!";
+      return false;
     }
   } else {
-    return "Must contain a lowercase letter!";
+    return false;
   }
 }
 
@@ -102,6 +105,8 @@ function doneUserUpdate(data, textStatus, jqXHR) {
     $("#save").fadeOut("slow", function() {
         $("#editButton, #pwdButton").fadeIn("fast");
     });
+  userInfo.fname = data.fname;
+  userInfo.lname = data.lname;
 };
 
 function changeEditButton(){
