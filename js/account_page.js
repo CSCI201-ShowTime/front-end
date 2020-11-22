@@ -33,20 +33,48 @@ $("#pwdButton").on("click", function() {
 
 $("#change-password").on("submit", function(event) {
     event.preventDefault();
-    let oldPass = $("#old").val();
     let newPass = $("#new").val();
+    let confirmPass = $("#confirm").val();
     // Validation
+    if (validatePassword(newPass) && newPass == confirmPass) {
+      let encodedNewPass = CryptoJS.MD5(newPass + "ShoWTimE").toString();
 
-
-    // AJAX, requires MD5 hashing
-    userUpdate(userInfo.fname, userInfo.lname, userInfo.email, newPass).done(doneUserUpdate);
-
-    // fade Out
-    $(this).fadeOut('slow', function() {
-        $("#old").val("");
-        $("#new").val("");
-    });
+      // AJAX, requires MD5 hashing
+      userUpdate(userInfo.fname, userInfo.lname, userInfo.email, encodedNewPass).done(function(data, textStatus, jqXHR) {
+        // fade Out
+        $(this).fadeOut('slow', function() {
+            $("#old").val("");
+            $("#new").val("");
+        });
+      });
+    }
 });
+
+
+function validatePassword(password) {
+  let lowercaseLetters = /[a-z]/g;
+  let uppercaseLetters = /[A-Z]/g;
+  let numbers = /[0-9]/g;
+  if (password.match(lowercaseLetters)) {
+    if (password.match(uppercaseLetters)) {
+      if (password.match(numbers)) {
+          if (/\s/.test(password)) {
+            return "No whitespace allowed!";
+          } else {
+            return "true";
+          }
+        } else {
+          return "Must contain an number!";
+        }
+    } else {
+      return "Must contain an uppercase letter!";
+    }
+  } else {
+    return "Must contain a lowercase letter!";
+  }
+}
+
+
 
 // AJAX request to user/PUT
 function userUpdate(fname, lname, email, pswrd) {
