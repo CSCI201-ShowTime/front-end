@@ -1,3 +1,13 @@
+document.querySelector("#title").oninput = function() {
+	let title = document.querySelector("#title").value.trim();
+	document.querySelector("#title").value = title;
+	if (title.length == 0) {
+		document.querySelector("#title + .error").style.display = "block";
+	} else {
+		document.querySelector("#title + .error").style.display = "none";
+	}
+}
+
 document.querySelector("form").onsubmit = function(e) {
 	e.preventDefault();
 	let title = document.querySelector("#title").value.trim();
@@ -29,6 +39,12 @@ document.querySelector("form").onsubmit = function(e) {
 		document.querySelector("#finishTime + .error").innerHTML = "";
 		document.querySelector("#finishTime + .error").style.display = "none";
 	}
+	if (startDate.getTime() > endDate.getTime()) {
+		document.querySelector("#startTime + .error").innerHTML = "Invalid Date";
+		document.querySelector("#startTime + .error").style.display = "block";
+		document.querySelector("#finishTime + .error").innerHTML = "Invalid Date";
+		document.querySelector("#finishTime + .error").style.display = "block";
+	}
 	// let repeat = document.querySelector("#repeat").value;
 	let notification = document.querySelector("#notification").value;
 	let notificationTime = new Date(notification);
@@ -38,6 +54,9 @@ document.querySelector("form").onsubmit = function(e) {
 	} else {
 		document.querySelector("#notification + .error").innerHTML = "";
 		document.querySelector("#notification + .error").style.display = "none";
+	}
+	if ($("#notification + .error").css("display") == "block" || $("#finishTime + .error").css("display") == "block" || $("#startTime + .error").css("display") == "block" || $("#title + .error").css("display") == "block") {
+		return false;
 	}
 	/*
 	let invitee = "";
