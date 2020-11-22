@@ -13,8 +13,13 @@ document.querySelector("form").onsubmit = function(e) {
 	} else {
 		document.querySelector("#date + .error").style.display = "none";
 	}
+	if ( $("#title + .error").css("display") == "block" || $("#date + .error").css("display") == "block" ) {
+		return false;
+	}
 	if (content.length == 0) {
-		confirm("Are you sure you want to create an empty diary?");
+		if ( !confirm("Are you sure you want to create an empty diary?") ) {
+			return false;
+		}
 	}
 	
 	$.get("/api/userid", {}, function(data){

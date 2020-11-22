@@ -23,7 +23,9 @@ document.querySelector("form").onsubmit = function(e) {
 	
 	var myDate=new Date();
 	myDate.setDate(myDate.getDate()+1);
-	
+	if ( $("#date + .error").css("display") == "block" || $("#remindTime + .error").css("display") == "block" || $("#title + .error").css("display") == "block" ) {
+		return false;
+	}
 	let priority = document.querySelector("#priority").value;
 	// let visibility = document.querySelector("#visibility").value;
 	$.get("/api/userid", { email: "email" }, function(data){

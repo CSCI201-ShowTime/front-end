@@ -27,7 +27,9 @@ document.querySelector("form").onsubmit = function(e) {
 		document.querySelector("#amount + .error").style.display = "none";
 	}
 	let content = document.querySelector("#content").value;
-	
+	if ( $("#amount + .error").css("display") == "block" || $("#time + .error").css("display") == "block" || $("#title + .error").css("display") == "block" ) {
+		return false;
+	}
 	$.get("/api/userid", {}, function(data){
   		$.ajax({
 		method: "POST",
