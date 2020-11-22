@@ -7,7 +7,8 @@ document.querySelector("#editButton").onclick = function() {
     });
 }
 
-document.querySelector("#save").onclick = function() {
+document.querySelector("#info-form").onsubmit = function(e) {
+    e.preventDefault();
     $("#info-form input, #info-form textarea").attr("readonly", true);
     $("#save").fadeOut("slow", function() {
         $("#editButton, #pwdButton").fadeIn("fast");
@@ -18,6 +19,34 @@ document.querySelector("#save").onclick = function() {
 
 }
 
+$("#password-form").on("click", function(event) {
+    event.stopPropagation(); 
+});
+
+$("#change-password").on("click", function(event) {
+    $(this).fadeOut("slow");
+});
+
+$("#pwdButton").on("click", function() {
+    $("#change-password").fadeIn("slow");
+})
+
+$("#change-password").on("submit", function(event) {
+    event.preventDefault();
+    let oldPass = $("#old").val();
+    let newPass = $("#new").val();
+    // Validation
+
+
+    // ajax
+
+    // fade Out
+    $(this).fadeOut('slow', function() {
+        $("#old").val("");
+        $("#new").val("");
+    });
+});
+
 function changeEditButton(){
   enableDisplay("change_profile");
   document.getElementById("fName").value = document.getElementById("name").innerHTML;
@@ -25,10 +54,12 @@ function changeEditButton(){
   document.getElementById("fInfo").value = document.getElementById("info").innerHTML;
   document.getElementById("fName").setAttribute("placeholder", document.getElementById("name").innerHTML);
 }
-document.getElementById("pwdButton").onclick=function(){
-  enableDisplay("change_password");
-  //"password"
-}
+
+// document.getElementById("pwdButton").onclick=function(){
+//   enableDisplay("change_password");
+//   //"password"
+// }
+
 function enableDisplay(str) {
   if(!isClicked){
     document.getElementById(str).style.display = "block";

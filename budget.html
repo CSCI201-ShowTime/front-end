@@ -99,6 +99,7 @@
             </div>
         </div>
     </nav>
+
     <!--floating hoverable side navigation bar-->
     <div id="mySidenav" class="sidenav">
         <a href="timeline.html" id="first">Timeline</a>
@@ -107,6 +108,7 @@
         <a href="create_reminder.html" id="fourth">+Reminder</a>
         <a href="create_transaction.html" id="fifth">+Transaction</a>
     </div>
+
     <div style="height: 55px;"></div>
     <div id="chart_wrap">
         <div id="chart_div"></div>
@@ -122,8 +124,7 @@
             </svg>
             Transactions
         </h2>
-        <!-- BK -->
-        <!-- only one table-responsive is needed -->
+        <!-- BK: only one table-responsive is needed -->
         <div class="table-responsive">
             <table class="table text-center table-striped table-hover" style="word-wrap: break-word;">
                 <thead>
@@ -151,6 +152,7 @@
     <hr class="bg-info line">
 
     <button class="btn btn-info btn-lg" id="budget-show-more" type="button" style="width: 50%; margin-left: auto;margin-right: auto; margin-bottom: 15px; display: block;">Show More</button>
+
     <div class="bottom-menu">
         <div style="height: 55px;"></div>
         <div class="nav-icons d-flex flex-row justify-content-center fixed-bottom text-center">
@@ -180,20 +182,12 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <!-- BK: vue -->
     <script src="https://unpkg.com/vue@next"></script>
+
+    <script type="text/javascript" src="js/server/g-ready-userinfo.js"></script>
     <script type="text/javascript" src="js/budget.js"></script>
     <script src="js/weather.js"></script>
-
-    <!-- BK: onload, get userinfo -->
-    <script type="text/javascript" src="js/server/g-ready-userinfo.js"></script>
-
-    <!-- BK -->
-    <script type="text/javascript" src="js/budget-server-get.js"></script>
-
-    <!-- Bilibiliy (v0.2.6): Server-side Communication Script -->
     <script type="text/javascript" src="js/server/logout-server.js"></script>
-    <!-- Bilibiliy (v0.2.6): This should be integrated into account_page.js -->
     <script type="text/javascript" src="js/server/logout-navbar-temp.js"></script>
 </body>
 </html>
