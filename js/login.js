@@ -36,7 +36,7 @@ document.querySelector("form").onsubmit = function(event) {
 			}
 		})
 		.done(function( data, textStatus, jqXHR ) {
-			// on success logic			
+			// on success logic
 			window.location.href = "/timeline";
 		})
 		.fail(function( jqXHR, textStatus, errorThrown ) {
