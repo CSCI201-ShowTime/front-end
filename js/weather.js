@@ -14,7 +14,6 @@ function weatherCallback2(position) {
 		return resp.json() //convert data to json
 	})
 	.then(function(data){
-		// console.log(data);
 		drawWeather(data);
 	})
 	.catch(function(){
