@@ -79,22 +79,9 @@
           <label for="file">
             Change Your avatar
           </label>
-
-          <!--MODIFYING
-          <div class="row">
-              <img src="images/account.png" alt="Avatar" class="avatar">
-          </div>-->
         </div>
         <!--User Info-->
-        <!-- <div style="height: 30px;"></div> -->
         <div class="info-container">
-            
-            <!-- <div class="row">
-                <div class="col center-align">
-                  <span>Name: </span>
-                    <span id="name">Tommy Trojan</span>
-                </div>
-            </div> -->
             <form id="info-form">
                 <div class="form-group form-row">
                     <div class="col">
@@ -112,112 +99,20 @@
                 </div>
                 <button id="save" type="submit" class="btn-block btn-info">Save</button>
             </form>
-            <!-- <div style="height: 30px;"></div>
-            <div class="row">
-                <div class="col center-align">
-                  <span>Email: </span>
-                    <span id="email">trojant@usc.edu</span>
-                </div>
-            </div>
-            <div style="height: 30px;"></div> -->
-            <!-- <div class="row">
-                <div class="col center-align">
-                  <span>Personal Info: </span>
-                    <span id="info">I am a CS student studying
-                        at University of Southern California
-                    </span>
-                </div>
-            </div> -->
         </div>
     </div>
 
     <!--Button-->
-    <!-- <div style="height: 30px;"></div> -->
     <div class="fluid-container wrapper">
         <div class="row center-align">
             <div class="col">
                 <button id="editButton" type="button" class="btn-block btn-info">Edit Profile</button>
-                <!-- <button id="editButton" onclick="changeEditButton()" type="button" class="btn-block btn-info">Edit Profile</button> -->
             </div>
             <div class="col">
                 <button id="pwdButton" type="button" class="btn-block btn-danger">Change Password</button>
-                <!-- <button id="pwdButton" onclick="enableDisplay('change_password')" type="button" class="btn-block btn-info">Change Password</button> -->
             </div>
         </div>
     </div>
-    <!--Normally hidden: change user profile-->
-    <!-- <div style="height: 30px;"></div>
-    <div class="container" id="change_profile">
-        <form name="info_form" action="/action_page.php"
-        onsubit="return validateForm()" method="post">
-        <div class="form-group">
-          <label for="name">New Name:</label>
-          <input type="text" class="form-control" id="fName">
-        </div>
-        <div class="form-group">
-          <label for="email">New Email address:</label>
-          <input type="email" class="form-control" id="fEmail">
-        </div>
-        <div class="form-group">
-          <label for="info">New Personal Info:</label>
-          <input type="text" class="form-control" id="fInfo">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-    </div> -->
-
-    <!--Normally hidden: change password-->
-   <!--  <div class="container" id="change_password">
-        <form action="/action_page.php">
-        <div class="form-group">
-          <label for="password">New Password:</label>
-          <input type="text" class="form-control" id="fPassword">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-    </div>
-    </div> -->
-
-    <!--Group Cards-->
-    <!--
-    <hr style="margin: 30px 2% 20px 2%;">
-    <h1 class="text-center">Groups</h1>
-    <div style="height: 20px;"></div>
-    <div class="card-group card-wrapper">
-        <a href="groups.html">
-            <div class="card group-block">
-                <div class="card-body">
-                    <h5 class="card-title">User Group1</h5>
-                    <h6 class="card-subtitle">Group Name</h6>
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class="card group-block">
-                <div class="card-body">
-                    <h5 class="card-title">User Group2</h5>
-                    <h6 class="card-subtitle">Group Name</h6>
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class="card group-block">
-                <div class="card-body">
-                    <h5 class="card-title">User Group3</h5>
-                    <h6 class="card-subtitle">Group Name</h6>
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class="card group-block">
-                <div class="card-body">
-                    <h5 class="card-title">User Group4</h5>
-                    <h6 class="card-subtitle">Group Name</h6>
-                </div>
-            </div>
-        </a>
-    </div>
-  -->
     <hr style="margin: 30px 2% 20px 2%;">
     <div class="bottom-menu">
         <div style="height: 55px;"></div>
@@ -268,17 +163,7 @@
     
     <script>
     var myUrl = '/api/userinfo';
-    //alert(myUrl);
     var parsedJson;
-    
-    // var userInfo = {
-    //     fname: "",
-    //     lname: "",
-    //     email: "",
-    //     id: 1,
-    //     password: ""
-    // };
-
     
     $.ajax({
         url: myUrl,
@@ -291,13 +176,6 @@
             document.querySelector("#fname").value = parsedJson.fname;
             document.querySelector("#lname").value = parsedJson.lname;
             document.querySelector("#email").value = parsedJson.email;
-            // console.log(parsedJson);
-            // userInfo.fname = parsedJson.fname;
-            // userInfo.lname = parsedJson.lname;
-            // userInfo.email = parsedJson.email;
-            // userInfo.id = parsedJson.id;
-            // userInfo.password = parsedJson.password;
-            // console.log(userInfo);
         },
         error: function (data, textStatus, xhr) {
             alert(data.responseText);

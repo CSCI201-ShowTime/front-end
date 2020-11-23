@@ -21,13 +21,11 @@ document.querySelector("form").onsubmit = function(event) {
 
 		// Li (v0.4.5): add encrypts password before sending to server again
 		var encoded = CryptoJS.MD5(password + "ShoWTimE");
-        alert(encoded);
 		document.querySelector("#password").value = encoded;
 		
 		password = $("#password").val();
 
 		// B (v0.2.6): moved login-server.js inline
-		// B todo: move login AJAX to separate file? test AJAX chaining using .done()
 		$.ajax({
 			method: "POST",
 			url: "/api/auth/login",
@@ -38,7 +36,7 @@ document.querySelector("form").onsubmit = function(event) {
 			}
 		})
 		.done(function( data, textStatus, jqXHR ) {
-			// on success logic, redirect?			
+			// on success logic			
 			window.location.href = "/timeline";
 		})
 		.fail(function( jqXHR, textStatus, errorThrown ) {

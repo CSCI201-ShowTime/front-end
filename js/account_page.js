@@ -1,5 +1,3 @@
-var isClicked = false;
-
 document.querySelector("#editButton").onclick = function() {
     $("#fname, #lname").attr("readonly", false);
     $("#editButton, #pwdButton").fadeOut("slow", function() {
@@ -9,8 +7,6 @@ document.querySelector("#editButton").onclick = function() {
 
 document.querySelector("#info-form").onsubmit = function(e) {
     e.preventDefault();
-    // $("#info-form input, #info-form textarea").attr("readonly", true);
-
     // AJAX 
     var fname = $.trim($('#fname').val());
     var lname = $.trim($('#lname').val());
@@ -100,7 +96,6 @@ function userUpdate(fname, lname, email, pswrd) {
 function doneUserUpdate(data, textStatus, jqXHR) {
     $('#fname').val(data.fname);
     $('#lname').val(data.lname);
-    // $('#email').val(data.email);
     $(".title h1").html(data.fname + " " + data.lname);
     $("#fname, #lname").attr("readonly", true);
     $("#save").fadeOut("slow", function() {
@@ -110,54 +105,6 @@ function doneUserUpdate(data, textStatus, jqXHR) {
   userInfo.lname = data.lname;
 };
 
-function changeEditButton(){
-  enableDisplay("change_profile");
-  document.getElementById("fName").value = document.getElementById("name").innerHTML;
-  document.getElementById("fEmail").value = document.getElementById("email").innerHTML;
-  document.getElementById("fInfo").value = document.getElementById("info").innerHTML;
-  document.getElementById("fName").setAttribute("placeholder", document.getElementById("name").innerHTML);
-}
-// document.getElementById("pwdButton").onclick=function(){
-//   enableDisplay("change_password");
-//   //"password"
-// }
-
-function enableDisplay(str) {
-  if(!isClicked){
-    document.getElementById(str).style.display = "block";
-    isClicked = true;
-  }
-  else{
-    document.getElementById(str).style.display = "none";
-    isClicked = false;
-  }
-
-}
-function alertt(){
-  alert("Hoho");
-}
-function getInnerVal(str){
-  return document.getElementById(str).innerHTML();
-}
-
-function ajaxGet(endpointUrl, returnFunction){
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', endpointUrl, true);
-  xhr.onreadystatechange = function(){
-    if(xhr.readyState = XMLHttpRequest.DONE){
-      if(xhr.status == 200){
-        returnFunction(xhr.responseText);
-      }
-      else{
-        alert('AJAX Error');
-        console.log(xhr.status);
-      }
-    }
-  }
-  xhr.send;
-}
-
-const imgDiv = document.querySelector('.profile-pic-div');
 const img = document.querySelector('#photo');
 const file = document.querySelector('#file');
 

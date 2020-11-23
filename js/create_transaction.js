@@ -39,7 +39,6 @@ document.querySelector("form").onsubmit = function(e) {
 		contentType: "application/json",
 		// Fixed: for JSON, data must be explicitly parsed
 		data: JSON.stringify({
-//			eventid: ,
 			amount: amount,
 			category: "default",
     		userid: data,

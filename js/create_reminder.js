@@ -39,7 +39,6 @@ document.querySelector("form").onsubmit = function(e) {
 		data: JSON.stringify({
 			remind_time: document.querySelector("#remindTime").value,
 			priority: priority,
-//			eventid: ,
     		userid: data,
     		start: document.querySelector("#date").value,
 			end: document.querySelector("#date").value,

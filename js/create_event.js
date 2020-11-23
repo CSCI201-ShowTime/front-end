@@ -58,12 +58,6 @@ document.querySelector("form").onsubmit = function(e) {
 	if ($("#notification + .error").css("display") == "block" || $("#finishTime + .error").css("display") == "block" || $("#startTime + .error").css("display") == "block" || $("#title + .error").css("display") == "block") {
 		return false;
 	}
-	/*
-	let invitee = "";
-	if (!document.querySelector("#private").checked) {
-		invitee = document.querySelector("#invitee").value;
-	}
-	*/
 	let notes = document.querySelector("#notes").value;
 	let visibility = document.querySelector("#visibility").value;
 	
@@ -89,7 +83,7 @@ document.querySelector("form").onsubmit = function(e) {
 		})
 		})
 		.done(function( data, textStatus, jqXHR ) {
-			// on success logic, redirect?			
+			// on success logic		
 			window.location.href = "/timeline";
 		})
 		.fail(function( jqXHR, textStatus, errorThrown ) {
@@ -190,12 +184,3 @@ document.querySelector("#allday").onchange = function() {
 		}
 	}
 }
-
-/*
-document.querySelector("#private").onchange = function() {
-	if (this.checked) {
-		document.querySelector(".invitee-div").style.display = "none";
-	} else {
-		document.querySelector(".invitee-div").style.display = "block";
-	}
-} */

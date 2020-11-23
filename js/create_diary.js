@@ -31,7 +31,6 @@ document.querySelector("form").onsubmit = function(e) {
 		contentType: "application/json",
 		// Fixed: for JSON, data must be explicitly parsed
 		data: JSON.stringify({
-//			eventid: ,
     		userid: data,
     		start: document.querySelector("#date").value,
 			end: document.querySelector("#date").value,
@@ -43,7 +42,7 @@ document.querySelector("form").onsubmit = function(e) {
 		})
 		})
 		.done(function( data, textStatus, jqXHR ) {
-			// on success logic, redirect?			
+			// on success logic		
 			window.location.href = "/timeline";
 		})
 		.fail(function( jqXHR, textStatus, errorThrown ) {

@@ -15,8 +15,6 @@ document.querySelector("form").onsubmit = function(event) {
 		let encoded = CryptoJS.MD5(password + "ShoWTimE").toString();
 		
 		// B (v0.2.6): updated AJAX request
-		// B todo: move login AJAX to separate file?
-		// test AJAX chaining using .done() for better fluency?
 		$.ajax({
 			method: "POST",
 			url: "/api/user",
@@ -157,14 +155,14 @@ function validatePassword(password) {
 	if (password.match(lowercaseLetters)) {
 		if (password.match(uppercaseLetters)) {
 			if (password.match(numbers)) {
-    			if (/\s/.test(password)) {
-    				return "No whitespace allowed!";
-    			} else {
-    				return "true";
-    			}
-    		} else {
-    			return "Must contain an number!";
-    		}
+				if (/\s/.test(password)) {
+					return "No whitespace allowed!";
+				} else {
+					return "true";
+				}
+			} else {
+				return "Must contain an number!";
+			}
 		} else {
 			return "Must contain an uppercase letter!";
 		}
