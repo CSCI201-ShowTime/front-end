@@ -176,6 +176,16 @@
 			refreshPage(start, end);
 		}
 	}
+    function formatDate(dateStr) {
+         let remindTimeFormat = new Date(dateStr);
+         let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(remindTimeFormat);
+         let mo = new Intl.DateTimeFormat('en', { month: 'long' }).format(remindTimeFormat);
+         let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(remindTimeFormat);
+         let hr = ("0" + remindTimeFormat.getHours()).slice(-2);
+         let mi = ("0" + remindTimeFormat.getMinutes()).slice(-2);
+         let remindTimeFormatString = `${mo} ${da}, ${ye} ` + hr + ":" + mi;
+         return remindTimeFormatString;
+    }
 
 
   function refreshPage(searchStartTime, searchEndTime){
@@ -251,7 +261,7 @@
         }
         
         a1.href = "#";
-        a2.innerHTML = parsedJson[i].start;
+        a2.innerHTML = formatDate(parsedJson[i].start);
         a2.href = "#";
         a2.classList.add('float-right');
         text.innerHTML = parsedJson[i].description;
@@ -290,7 +300,7 @@
 	        a1.innerHTML = "Public Event: " + parsedJson[i].title;
 	         property.innerHTML = "Remind Time: " + parsedJson[i].remind_time;
 	        a1.href = "#";
-	        a2.innerHTML = parsedJson[i].start;
+	        a2.innerHTML = formatDate(parsedJson[i].start);
 	        a2.href = "#";
 	        a2.classList.add('float-right');
 	        text.innerHTML = parsedJson[i].description;
