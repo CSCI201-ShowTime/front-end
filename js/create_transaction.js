@@ -40,7 +40,7 @@ document.querySelector("form").onsubmit = function(e) {
 		// Fixed: for JSON, data must be explicitly parsed
 		data: JSON.stringify({
 			amount: amount,
-			category: "default",
+			category: document.querySelector("#category").value,
     		userid: data,
     		start: document.querySelector("#time").value,
 			end: document.querySelector("#time").value,
