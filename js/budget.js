@@ -38,6 +38,17 @@ function budGet() {
     });
 };
 
+function formatDate(dateStr) {
+    let remindTimeFormat = new Date(dateStr);
+    let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(remindTimeFormat);
+    let mo = new Intl.DateTimeFormat('en', { month: 'short' }).format(remindTimeFormat);
+    let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(remindTimeFormat);
+    let hr = ("0" + remindTimeFormat.getHours()).slice(-2);
+    let mi = ("0" + remindTimeFormat.getMinutes()).slice(-2);
+    let remindTimeFormatString = `${mo} ${da}, ${ye} ` + hr + ":" + mi;
+    return remindTimeFormatString;
+}
+
 // on success AJAX, ...
 function doneBudGet(data, textStatus, jqXHR) {
 
@@ -47,7 +58,7 @@ function doneBudGet(data, textStatus, jqXHR) {
             count: tbIndex++, 
             title: data[i].title, 
             amount: data[i].amount,
-            start: data[i].start
+            start: formatDate(data[i].start)
         });
         // update data in category Map
         var cat = data[i].category;

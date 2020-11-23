@@ -3,7 +3,6 @@ google.charts.load('current', {'packages':['corechart']});
 
 // Set a callback to run when the Google Visualization API is loaded.
 google.charts.setOnLoadCallback(initChart);
-google.charts.setOnLoadCallback(drawChart);
 
 // BK: expose data table to global scope
 var gData;
@@ -13,6 +12,7 @@ function initChart() {
     gData = new google.visualization.DataTable();
     gData.addColumn('string', 'Topping');
     gData.addColumn('number', 'Slices');
+    drawChart();
 }
 
 // Callback that creates and populates a data table,
