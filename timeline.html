@@ -246,10 +246,10 @@
           } else {
             property.innerHTML = "Priority: Medium";
           }
-          property.innerHTML += " Remind Time: " + parsedJson[i].remind_time;
+          property.innerHTML += " Remind Time: " + formatDate(parsedJson[i].remind_time);
         } else if (parsedJson[i].type == "durationevent") {
           a1.innerHTML = "Event: " + parsedJson[i].title;
-          property.innerHTML = "Remind Time: " + parsedJson[i].remind_time;
+          property.innerHTML = "Remind Time: " + formatDate(parsedJson[i].remind_time);
         } else if (parsedJson[i].type == "diary") {
           a1.innerHTML = "Diary: " + parsedJson[i].title;
         } else if (parsedJson[i].type == "budget") {
@@ -298,7 +298,7 @@
 	        let text = document.createElement("p");
 	        let property = document.createElement("p");
 	        a1.innerHTML = "Public Event: " + parsedJson[i].title;
-	         property.innerHTML = "Remind Time: " + parsedJson[i].remind_time;
+	         property.innerHTML = "Remind Time: " + formatDate(parsedJson[i].remind_time);
 	        a1.href = "#";
 	        a2.innerHTML = formatDate(parsedJson[i].start);
 	        a2.href = "#";
